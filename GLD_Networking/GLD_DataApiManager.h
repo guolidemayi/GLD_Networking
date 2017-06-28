@@ -10,4 +10,7 @@
 
 @interface GLD_DataApiManager : GLD_NetworkAPIManager
 
+
+- (NSNumber *)loadMoreDataWithCompletionHandle:(completionHandleBlock)completionHandler;
+- (NSNumber *)fetchDataWithCompletionHandle:(completionHandleBlock)completionHandler;
 @end

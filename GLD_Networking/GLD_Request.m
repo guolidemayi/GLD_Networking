@@ -45,6 +45,24 @@ static GLD_Request *shareRequest;
     return request;
 }
 
+- (NSMutableURLRequest *)generateUploadRequestWithPath:(NSString *)path useHttps:(BOOL)useHttps method:(NSString *)method params:(NSDictionary *)params headers:(NSDictionary *)headers contents:(NSArray<NSData *> *)contents{
+    NSString *urlString = [self urlWithPath:path useHttps:useHttps];
+    
+    NSMutableURLRequest *request = [self.requestSerializer multipartFormRequestWithMethod:method URLString:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [contents enumerateObjectsUsingBlock:^(NSData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [formData appendPartWithFormData:obj name:@""];
+        }];
+        
+    } error:nil];
+    [self setCommonRequestHeaderForRequest:request];
+    //    [self setCookies];
+    
+    [headers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString *  _Nonnull obj, BOOL * _Nonnull stop) {
+        [request setValue:obj forHTTPHeaderField:key];
+    }];
+    return request;
+}
+
 
 - (NSString *)urlWithPath:(NSString *)path useHttps:(BOOL)useHttps{
     if ([path hasPrefix:@"http"]) {

@@ -13,8 +13,15 @@
 @interface GLD_NetworkClient : NSObject
 
 
-- (NSNumber *)dispatchTaskWithPath:(NSString *)path useHttps:(BOOL)useHttps requestType:(gld_networkRequestType)requestType params:(NSDictionary *)params headers:(NSDictionary *)headers completionHandle:(void(^)(NSURLResponse *, id, NSError *))completionHandle;
+- (NSNumber *)dispatchTaskWithPath:(NSString *)path
+                          useHttps:(BOOL)useHttps
+                       requestType:(gld_networkRequestType)requestType
+                            params:(NSDictionary *)params
+                           headers:(NSDictionary *)headers
+                  completionHandle:(void(^)(NSURLResponse *, id, NSError *))completionHandle;
 
+
+- (NSNumber *)dispatchUploadTaskWithPath:(NSString *)path useHttps:(BOOL)useHttps requestType:(gld_networkRequestType)requestType params:(NSDictionary *)params headers:(NSDictionary *)headers contents:(NSArray<NSData *> *)contents completionHandle:(void(^)(NSURLResponse *, id, NSError *))completionHandle;
 + (instancetype)shareInstance;
 
 + (void)cancleTaskWithTaskIdentifier:(NSNumber *)taskIdentifier;

@@ -12,5 +12,16 @@
 
 + (instancetype)shareInstance;
 + (void)switchService;
-- (NSMutableURLRequest *)generateRequestWithPath:(NSString *)path useHttps:(BOOL)useHttps method:(NSString *)method params:(NSDictionary *)params headers:(NSDictionary *)headers;
+- (NSMutableURLRequest *)generateRequestWithPath:(NSString *)path
+                                        useHttps:(BOOL)useHttps
+                                          method:(NSString *)method
+                                          params:(NSDictionary *)params
+                                         headers:(NSDictionary *)headers;
+
+- (NSMutableURLRequest *)generateUploadRequestWithPath:(NSString *)path
+                                              useHttps:(BOOL)useHttps
+                                                method:(NSString *)method
+                                                params:(NSDictionary *)params
+                                               headers:(NSDictionary *)headers
+                                              contents:(NSArray<NSData *> *)contents;
 @end

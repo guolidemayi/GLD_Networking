@@ -69,7 +69,22 @@ static dispatch_semaphore_t lock;
     taskIdentifier[0] = @(task.taskIdentifier);
     return task;
 }
-
+- (NSNumber *)dispatchUploadTaskWithPath:(NSString *)path useHttps:(BOOL)useHttps requestType:(gld_networkRequestType)requestType params:(NSDictionary *)params headers:(NSDictionary *)headers contents:(NSArray<NSData *> *)contents completionHandle:(void (^)(NSURLResponse *, id, NSError *))completionHandle{
+    NSString *method = requestType == gld_networkRequestTypeGET ? @"GET" : @"POST";
+    NSMutableArray *taskIdentifier = [NSMutableArray arrayWithObject:@-1];
+    NSMutableURLRequest *request = [[GLD_Request shareInstance] generateUploadRequestWithPath:path useHttps:useHttps method:method params:params headers:headers contents:contents];
+    
+    NSURLSessionDataTask *task = [self.sessionManager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+        [self checkSeriveWithTaskError:error];
+        [self.dispathTable removeObjectForKey:taskIdentifier.firstObject];
+        dispatch_semaphore_signal(lock);
+        completionHandle ? completionHandle(response,responseObject, error) : nil;
+        
+    }];
+    taskIdentifier[0] = @(task.taskIdentifier);
+    return @(task.taskIdentifier);
+}
 - (NSNumber *)dispatchTask:(NSURLSessionDataTask *)task{
     if (task == nil) return @-1;
     dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
