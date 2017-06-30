@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F038A371F062794004EE692 /* GLD_DataApiManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F1265481F039B5D00E6243C /* GLD_DataApiManager.h */; };
 		0F1265391F0230FF00E6243C /* GLD_Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1265381F0230FF00E6243C /* GLD_Request.m */; };
 		0F12653C1F02471700E6243C /* GLD_NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F12653B1F02471700E6243C /* GLD_NetworkClient.m */; };
 		0F12653F1F02517B00E6243C /* GLD_NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F12653E1F02517B00E6243C /* GLD_NetworkReachability.m */; };
@@ -251,22 +252,9 @@
 				0F7749D01EFA42570072B865 /* AppDelegate.m */,
 				0F7749D21EFA42570072B865 /* ViewController.h */,
 				0F7749D31EFA42570072B865 /* ViewController.m */,
-				0F774A831EFA52810072B865 /* GLD_Service.h */,
-				0F774A841EFA52810072B865 /* GLD_Service.m */,
-				0F1265371F0230FF00E6243C /* GLD_Request.h */,
-				0F1265381F0230FF00E6243C /* GLD_Request.m */,
-				0F12653A1F02471700E6243C /* GLD_NetworkClient.h */,
-				0F12653B1F02471700E6243C /* GLD_NetworkClient.m */,
-				0F12653D1F02517B00E6243C /* GLD_NetworkReachability.h */,
-				0F12653E1F02517B00E6243C /* GLD_NetworkReachability.m */,
-				0F1265401F0257D100E6243C /* GLD_CacheManager.h */,
-				0F1265411F0257D100E6243C /* GLD_CacheManager.m */,
-				0F1265431F02713A00E6243C /* GLD_NetworkAPIManager.h */,
-				0F1265441F02713A00E6243C /* GLD_NetworkAPIManager.m */,
-				0F1265461F03884C00E6243C /* GLD_NetworkConfig.h */,
-				0F1265471F03984C00E6243C /* GLD_NetworkError.h */,
-				0F1265481F039B5D00E6243C /* GLD_DataApiManager.h */,
-				0F1265491F039B5D00E6243C /* GLD_DataApiManager.m */,
+				0FCAE9CB1F04FA94002406D5 /* Helper */,
+				0FCAE9CC1F04FAC1002406D5 /* network */,
+				0FCAE9CA1F04FA5C002406D5 /* API */,
 				0F7749D51EFA42570072B865 /* Main.storyboard */,
 				0F7749D81EFA42570072B865 /* Assets.xcassets */,
 				0F7749DA1EFA42570072B865 /* LaunchScreen.storyboard */,
@@ -474,6 +462,43 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		0FCAE9CA1F04FA5C002406D5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0F1265431F02713A00E6243C /* GLD_NetworkAPIManager.h */,
+				0F1265441F02713A00E6243C /* GLD_NetworkAPIManager.m */,
+				0F1265481F039B5D00E6243C /* GLD_DataApiManager.h */,
+				0F1265491F039B5D00E6243C /* GLD_DataApiManager.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		0FCAE9CB1F04FA94002406D5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0F774A831EFA52810072B865 /* GLD_Service.h */,
+				0F774A841EFA52810072B865 /* GLD_Service.m */,
+				0F1265461F03884C00E6243C /* GLD_NetworkConfig.h */,
+				0F1265471F03984C00E6243C /* GLD_NetworkError.h */,
+				0F12653D1F02517B00E6243C /* GLD_NetworkReachability.h */,
+				0F12653E1F02517B00E6243C /* GLD_NetworkReachability.m */,
+				0F1265401F0257D100E6243C /* GLD_CacheManager.h */,
+				0F1265411F0257D100E6243C /* GLD_CacheManager.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		0FCAE9CC1F04FAC1002406D5 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				0F1265371F0230FF00E6243C /* GLD_Request.h */,
+				0F1265381F0230FF00E6243C /* GLD_Request.m */,
+				0F12653A1F02471700E6243C /* GLD_NetworkClient.h */,
+				0F12653B1F02471700E6243C /* GLD_NetworkClient.m */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F038A371F062794004EE692 /* GLD_DataApiManager.h in Sources */,
 				0F774A5F1EFA44160072B865 /* AFURLSessionManager.m in Sources */,
 				0F774A7F1EFA44160072B865 /* UIScrollView+MJExtension.m in Sources */,
 				0F774A741EFA44160072B865 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -809,6 +835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GLD_Networking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "guolide.GLD-Networking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -820,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GLD_Networking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "guolide.GLD-Networking";
 				PRODUCT_NAME = "$(TARGET_NAME)";

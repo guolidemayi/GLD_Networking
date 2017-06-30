@@ -11,6 +11,19 @@
 #import "GLD_NetworkClient.h"
 #import "GLD_NetworkError.h"
 
+@implementation GLD_APIConfiguration
+
+- (instancetype)init {
+    if (self = [super init]) {
+        
+        self.useHttps = YES;
+        self.requestType = gld_networkRequestTypePOST;
+    }
+    return self;
+}
+
+@end
+
 @implementation GLD_NetworkAPIManager
 
 
